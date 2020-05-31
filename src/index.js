@@ -1,10 +1,11 @@
 const express = require ('express');
 const mongoose = require('mongoose');
 const config = require('./config')
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
-console.log("mongo URI is: ", config.development.database.mongoUri);
+app.use(authRoutes);
 
 mongoose.connect(config.development.database.mongoUri, {
     useNewUrlParser: true,
