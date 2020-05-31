@@ -1,10 +1,11 @@
 const express = require ('express');
 const mongoose = require('mongoose');
 const config = require('./config')
+const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
-
+app.use(bodyParser.json());
 app.use(authRoutes);
 
 mongoose.connect(config.development.database.mongoUri, {
