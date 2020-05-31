@@ -1,4 +1,6 @@
 const express = require('express');
+const moongoose = require('mongoose');
+const User = moongoose.model('User');
 
 const router = express.Router();
 

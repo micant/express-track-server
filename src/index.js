@@ -1,3 +1,5 @@
+require('./models/User');
+
 const express = require ('express');
 const mongoose = require('mongoose');
 const config = require('./config')
@@ -10,12 +12,14 @@ app.use(authRoutes);
 
 mongoose.connect(config.development.database.mongoUri, {
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useUnifiedTopology: true
 });
 
 mongoose.connection.on('connected', () => {
     console.log(`Connected to mongo instance: ${mongoose.connection.name}`)
 });
+
 mongoose.connection.on('error', (err) => {
     console.log(`Error connecting to mongo db: ${err}`)
 });
